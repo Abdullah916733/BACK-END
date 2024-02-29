@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .weatherCard {
+        border: 1px solid black;
+        height: 60%;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #weatherIcon i {
+        font-size: 50px;
+      }
+
+      .weatherTem {
+        /* border: 1px solid green; */
+        height: 20%;
+        width: 40%;
+      }
+
+      .weatherTemFirst {
+        margin: 0px;
+        text-align: center;
+        font-size: 25px;
+      }
+
+      .weatherTem div {
+        /* border: 1px solid red; */
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    <title>WeatherApp</title>
+  </head>
+  <body>
+    <h1>WeatherApp</h1>
+    <div class="weatherCard">
+      <div id="weatherIcon">
+        <i class="fa-solid fa-sun" style="color: yellow"></i>
+      </div>
+      <div>
+        <h1v> {%location%} {%country%}</h1v>
+        <p id="date">wed | oct 23 | 9:35 Am</p>
+      </div>
+
+      <div class="weatherTem">
+        <p class="weatherTemFirst">{%currentTem%}</p>
+        <div>
+          <p>{%minTem%}</p>
+          <p>{%maxTem%}</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const realDate = new Date();
+      const setDate = document.getElementById("date");
+
+      const DateFunc = () => {
+        const days = ["sun", "mon", "tue", "wed", "thu", "fri", "star"];
+
+        const month = [
+          "jan",
+          "fab",
+          "mar",
+          "apri",
+          "may",
+          "jun",
+          "jul",
+          "aug",
+          "sep",
+          "oct",
+          "nov",
+          "dec",
+        ];
+
+        const dateValue =
+          days[realDate.getDay()] +
+          " | " +
+          month[realDate.getMonth()] +
+          " " +
+          realDate.getDate();
+
+        return dateValue.toUpperCase();
+      };
+
+      const timeFunc = () => {
+        const hourse = realDate.getHours();
+        const time = realDate.getMinutes();
+
+        const timeValue = hourse + ":" + time;
+
+        return timeValue;
+      };
+
+      setDate.innerHTML = DateFunc() + " | " + timeFunc();
+    </script>
+  </body>
+</html>
