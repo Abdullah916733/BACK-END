@@ -5,6 +5,7 @@ mongoose
   .then(() => console.log(" connection successfull!"))
   .catch((error) => console.log(error));
 
+  
 const firstDatabaseSchema = new mongoose.Schema({
   name: {
     type: String,
